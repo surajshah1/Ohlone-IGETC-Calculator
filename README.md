@@ -1,6 +1,6 @@
 ## Ohlone-IGETC-Calculator
 
-Automate selection process of general education courses for transfer students following plan C at Ohlone College. 
+Automate selection process of general education courses for transfer students following plan C at Ohlone College.\
 [Transfer requirements](https://www.ohlone.edu/sites/default/files/group/Curriculum_Guides/20182019/20182019geplanc.pdf)
 
 ## Installation
