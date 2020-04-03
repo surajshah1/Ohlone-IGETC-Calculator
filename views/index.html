@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>
+            IGETC Calculator
+        </title>
+        <script>src = "https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"</script>
+        <script>src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"</script>
+        <style>
+            .list {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0px;
+                padding: 10px 0 0;
+            }
+            .list > li, .extra {
+                display: block;
+                background-color: #a7b11e;
+                padding: 10px;
+            }
+            .info {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 40px;
+                padding: 10px 0 0;
+                background-color: #a1da1d;
+                color: blueviolet;
+            }
+            .extra {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #00ff00;
+                font-size: xx-large;
+            }
+            .button {
+                font-size: larger;
+                background-color: #eeff00;
+                padding: 20px;
+                border-radius: 5px;
+            }
+            .interaction {
+                text-align: center
+            }
+        </style>
+    </head>
+    <body style="background-color:green;text-align:center">
+    <div class = "info">
+    <p>Welcome to the IGETC Calculator! This is a quick check for Ohlone students to see if you have completed the IGETC requirements for CS and UC. <br>
+    If you have taken courses at other colleges or any AP classes in high school, please enter the Ohlone Equivalent. Please enter your courses taken by its ID (example: "ENGL 101A")<br>
+    Remember this is a quick check and not meant to replace any questions you would have with your Ohlone counselor. :)</p>
+    <img src= "asoclogo.png" width="250" height="250">  </img>
+    </div>
+    <div class ="interaction" id="courses">
+        <button class="del" id = "del-btn">Remove from list</button>
+        <button class="Foreign Language" id = "lang-btn">2 years of foreign language completed at high school</button>
+        <ul class = "list" id="courselist">
+            <li>
+                <span class ="cname">Course</span>
+            </li>
+        </ul>
+        <div class= "extra">
+            <form action= "/courses" method="post" id="addform">
+                <input type="text" id="cname-field" name = "course" placeholder="Course"/>
+                <button type="submit" id="add-btn">Add Class</button>
+            </form>
+        </div>
+    </div>
+    <!--table id = "coursetable">
+        <th> Area </th>
+        <th> Courses </th>
+    </table-->
+
+    <br>
+    <br>
+    <a href="/calculation" class="button"> Calculate! </a>
+    <br>
+    <br>
+    <br>
+    <footer>Created by the Associated Students of Ohlone College Research and Development Branch</footer>
+    </body>
+    <script type="text/javascript">
+       var allcourse = {"Area 1: English Communication": ["ENGL 101A", "ENGL 101C", "COMM 111"], "Area 2: Mathematical Concepts and Quantitative Reasoning": ["MATH 101A", "MATH 101B", "MATH 101C", "MATH 103", "MATH 104", "MATH 156", "MATH 159", "MATH 188"], "Area 3A: Arts": ["ART 100", "ART 101", "ART 103A", "ART 103B", "ART 103C", "ART 131", "HIST 141", "HIST 142", "HIST 143", "IS 100 ", "IS 142", "IS 143", "MUS 100", "MUS 101", "MUS 102", "MUS 104", "MUS 106", "MUS 110A", "MUS 122", "MUS 123", "MUS 125", "TD 100", "TD 102", "TD 109"], "Area 3B: Humanities": ["ASL 103A", "ASL 104A", "CHIN 102A", "CHIN 102B", "CHS 102A", "CHS 102B", "CHS 106A", "CHS 112", "ENGL 101B", "ENGL 104", "ENGL 106", "ENGL 107", "ENGL 109", "ENGL 112", "ENGL 113", "ENGL 114", "ENGL 115", "ENGL 117", "ENGL 118", "ENGL 120A", "ENGL 120B", "ENGL 121", "ENGL 122", "ENGL 123", "ENGL 125A", "ENGL 125B", "ENGL 130", "FREN 102A", "FREN 102B", "HIST 102A", "HIST 102B", "HIST 104A", "HIST 104B", "HIST 105", "HIST 106A", "HIST 106B", "HIST 107", "HIST 114A", "HIST 114B", "HIST 115", "HIST 117A", "HIST 117B", "HIST 118", "HIST 119A", "HIST 119B", "JOUR 106", "JPNS 102A", "MM 100", "PHIL 100", "PHIL 101", "PHIL 102", "PHIL 106", "PHIL 109A", "PHIL 109B", "PHIL 110", "PHIL 112", "PHIL 114", "SPAN 102A", "SPAN 102B", "TD 107", "WS 115"], "Area 4: Social and Behavioral Science": ["AJ 108", "ANTH 101", "ANTH 102", "ANTH 103", "ANTH 104", "ANTH 106", "ANTH 107", "ANTH 108", "BA 102A", "BA 102B", "BA 142", "BRDC 155", "CHS 101", "CHS 102A", "CHS 102B", "COMM 100", "COMM 115", "COMM 118", "COMM 122", "ECS 301", "ENVS 103", "ENVS 105", "ENVS 107", "ENVS 109", "GEOG 102", "GEOG 104", "GEOG 105", "GEOG 106", "GEOG 107", "GEOG 108", "HIST 102A", "HIST 102B", "HIST 105", "HIST 106A", "HIST 106B", "HIST 114A", "HIST 114B", "HIST 115", "HIST 117A", "HIST 117B", "HIST 119A", "HIST 119B", "IS 110", "IS 120", "JOUR 155", "PS 102", "PS 103", "PS 104", "PS 105", "PSY 101", "PSY 102", "PSY 106", "PSY 108", "PSY 112", "PSY 115", "PSY 120", "SOC 101", "SOC 102", "SOC 103", "SOC 105", "SOC 106", "WS 101", "WS 108", "WS 120"], "area5alab": ["ASTR 101A", "ASTR 102", "ASTR 101B", "CHEM 101A", "CHEM 101B", "CHEM 102", "CHEM 109", "CHEM 112A", "CHEM 112B", "GEOG 101", "GEOL 102L", "GEOL 102", "GEOL 103L", "GEOL 103", "GEOL 104L", "GEOL 104", "PHYS 120", "PHYS 121", "PHYS 140", "PHYS 141", "PHYS 142"], "Area 5A: Physical Science (1 course left)": ["ANTH 101", "BIOL 101A", "BIOL 101B", "BIOL 103A", "BIOL 103B", "BIOL 104", "BIOL 106", "BIOL 130", "BIOL 142", "ENVS 142","ASTR 101A", "ASTR 101B", "CHEM 108", "ENVS 110", "GEOL 102", "GEOL 103", "GEOL 104", "PHYS 108"], "Area 5B: Biological Science": ["BIOL 105", "BIOL 107", "BIOL 109", "BIOL 141", "ENVS 108"], "Area 6: Language other than English": ["ARBC 101A", "ARBC 101B", "ASL 101A", "ASL 101B", "ASL 102A", "ASL 102B", "ASL 103A", "ASL 103A4", "ASL 103B", "ASL 104A", "ASL 104B", "CHIN 101A", "CHIN 101B", "CHIN 102A", "CHIN 102B", "FREN 101A", "FREN 101B", "FREN 102A", "FREN 102B", "JPNS 101A", "JPNS 101B", "JPNS 102A", "SPAN 101A", "SPAN 101B", "SPAN 102A"], "US History, Constitution, and American Ideals (CSU required only)": ["HIST 117A", "HIST 105", "PS 102", "HIST 117B", "CHS 102A", "CHS 102B", "HIST 102A", "HIST 102B", "HIST 114A", "HIST 114B", "HIST 115", "HIST 119A", "HIST 119B"]}
+
+        document.getElementById("add-btn").onclick = function() {
+            var text = document.getElementById("cname-field").value;
+            text = text.toUpperCase();
+            console.log(text);
+            var li = "<li>" + text + "</li>";
+            document.getElementById("courselist").innerHTML += li;
+            //document.getElementById("cname-field").value = "";
+        }
+
+        document.getElementById("del-btn").onclick = function() {
+        }
+
+        Object.keys(allcourse).map(function (item) {
+            var tr = "<tr>" + "<td>" + item + "</td>" + "<td>"+ allcourse[item].map(function(course) {
+                return "<var>" + course + "</var>";
+            }) + "</td>" + "</tr>";
+            document.getElementById("coursetable").innerHTML += tr;
+            })
+
+          </script>
+</html>
