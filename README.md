@@ -27,3 +27,13 @@ Open localhost:8080 in browser
 ```bash
 http://localhost:8080/
 ```
+
+## Demo
+##### Home page
+![Home Page](/screenshots/home)
+
+##### Add classes
+![Add classes](/screenshots/add)
+
+##### Results page
+![Results Page](/screenshots/results)
