@@ -30,10 +30,10 @@ http://localhost:8080/
 
 ## Demo
 ##### Home page
-![Home Page](/screenshots/home)
+![Home Page](/screenshots/home.png)
 
 ##### Add classes
-![Add classes](/screenshots/add)
+![Add classes](/screenshots/add.png)
 
 ##### Results page
-![Results Page](/screenshots/results)
+![Results Page](/screenshots/results.png)
